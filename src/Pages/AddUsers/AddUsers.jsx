@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const AddUsers = () => {
   const handleAdduser = (e) => {
@@ -22,9 +23,10 @@ const AddUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // if (data.insertedId) {
-        //   swal('Great!', 'Successfully added coffee!', 'success');
-        // }
+        if (data.insertedId) {
+          swal('Great!', 'Successfully added user!', 'success');
+          form.reset();
+        }
       });
   };
   return (
@@ -85,8 +87,8 @@ const AddUsers = () => {
               <option disabled selected>
                 Status
               </option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option defaultValue="Active">Active</option>
+              <option defaultValue="Inactive">Inactive</option>
             </select>
           </div>
         </div>
